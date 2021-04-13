@@ -9,9 +9,16 @@
     <script src="timer.js"></script>
 </head>
 <body>
-    <div>
+    <div id="time">
+        <label for="minute">작업시간: </label><input type="text" maxlength="4" size='1' id="minute"><label for="minute"> 분 </label><br>
+        <label for="rest"> 쉬는시간: </label><input type="text" maxlength="4" size="1" id="rest"><label for="rest"> 분 </label>
+        <input type="button" id="start" onclick="timer();" value="시작">
+    </div>
+    <div id="timer">
         
     </div>
-    
+    <div id="made">
+        Made by fangdol
+    </div>
 </body>
 </html>
