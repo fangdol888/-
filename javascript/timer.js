@@ -49,7 +49,7 @@ function showTime(started){
 function resting(started){
     var now = new Date();
     var text = document.getElementById("timer");
-    var diff = min * 60 * 1000 - (now.getTime() - started.getTime());
+    var diff = rest * 60 * 1000 - (now.getTime() - started.getTime());
     var second = Math.floor(diff /1000) % 60;
     var minute = Math.floor(diff/1000/60) % 60;
     text.innerHTML= "남은 시간...<br>" + minute + "분 " + second+" 초";
