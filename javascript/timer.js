@@ -1,7 +1,9 @@
 var min;
 var rest;
-var stopping;
+var stopping = false;
 var start = false;
+var myAlarm = 1;
+
 function timer(){
     min = document.getElementById("minute").value;
     rest = document.getElementById("rest").value;
@@ -39,6 +41,7 @@ function showTime(started){
         
     }
     else{
+        alarm();
         resting(now);
     }
 }
@@ -59,6 +62,7 @@ function resting(started){
         setTimeout(resting, 100, started);
     }
     else{
+        alarm();
         showTime(now);
     }
 }
@@ -66,4 +70,13 @@ function resting(started){
 function stop(){    
     stopping = true;
     start=false;
+}
+function alarm(){
+    var src = "./mp3/"+myAlarm+".mp3";
+    var audio = new Audio(src);
+    audio.play();
+}
+function showOption(){
+    var list = document.getElementById("option");
+    
 }
