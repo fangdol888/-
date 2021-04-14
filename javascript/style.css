@@ -29,14 +29,3 @@ div#time{
     margin-left:auto;
     margin-right: auto;
 }
-
-div#option{
-    position: fixed;
-    bottom:10px;
-    width:200px;
-    background-color: cornflowerblue;
-    opacity: 0;
-    visibility:initial;
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transfomr 0.25s;
-
-}
