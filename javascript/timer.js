@@ -52,7 +52,7 @@ function resting(started){
     var diff = min * 60 * 1000 - (now.getTime() - started.getTime());
     var second = Math.floor(diff /1000) % 60;
     var minute = Math.floor(diff/1000/60) % 60;
-    text.innerHTML= "남은 쉬는시간은...<br>" + minute + "분 " + second+" 초";
+    text.innerHTML= "남은 시간...<br>" + minute + "분 " + second+" 초";
     if(stopping){
         stopping=false;
         text.innerHTML = "중지되었습니다.";
