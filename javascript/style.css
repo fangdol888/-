@@ -1,0 +1,31 @@
+#made{
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    font-weight: bold;
+    color:darkblue;
+}
+body{
+    background-color:aquamarine;
+    font-family:'나눔고딕',sans-serif;
+    font-weight:bold;
+    text-align:center;
+}
+div#timer{
+    color:red;
+    font-size: large;
+    font-weight: bold;
+    
+}
+div#time{
+    color:darkcyan;
+    
+}
+#box{
+    padding: 10px;
+    border-style: solid;
+    border-width: 2px;
+    max-width:200px;
+    margin-left:auto;
+    margin-right: auto;
+}
