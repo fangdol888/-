@@ -29,7 +29,7 @@ function showTime(started){
     var second = Math.floor(diff /1000) % 60;
     var minute = Math.floor(diff/1000/60) % 60;
 
-    text.innerHTML= "다음 쉬는 시간 까지... <br>" + minute + "분 " + second+" 초";
+    text.innerHTML= "남은 작업시간... <br>" + minute + "분 " + second+" 초";
 
     if(stopping){
         stopping = false;
@@ -52,7 +52,7 @@ function resting(started){
     var diff = rest * 60 * 1000 - (now.getTime() - started.getTime());
     var second = Math.floor(diff /1000) % 60;
     var minute = Math.floor(diff/1000/60) % 60;
-    text.innerHTML= "남은 시간...<br>" + minute + "분 " + second+" 초";
+    text.innerHTML= "남은 쉬는시간...<br>" + minute + "분 " + second+" 초";
     if(stopping){
         stopping=false;
         text.innerHTML = "중지되었습니다.";
@@ -65,6 +65,23 @@ function resting(started){
         alarm();
         showTime(now);
     }
+}
+var showop = false;
+
+function explain(e){
+    if(!showop){
+        var list = document.getElementById("option");
+        var label = "<label for='"+e.id+"'>옵션</label>";
+        list.innerHTML = label;
+    }
+}
+
+function tomato(e){
+    if(!showop){
+        var list = document.getElementById("option");
+        list.innerHTML = "";
+    }
+     
 }
 
 function stop(){    
@@ -79,7 +96,7 @@ function alarm(){
 function setting(e){
     myAlarm = e.value;
 }
-var showop = false;
+
 
 function option(){
     if(showop){
@@ -93,6 +110,7 @@ function option(){
 
 function showOption(){
     var list = document.getElementById("option");
+    list.innerHTML ="";
     //list.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + 1 + "'checked >알림음"+ 1 +"<br>";
     for(i=0;i<8;i++){
         list.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + (i+1) + "'>알림음"+(i+1)+"<br>";
