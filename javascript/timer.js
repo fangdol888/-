@@ -76,7 +76,32 @@ function alarm(){
     var audio = new Audio(src);
     audio.play();
 }
+function setting(e){
+    myAlarm = e.value;
+}
+var showop = false;
+
+function option(){
+    if(showop){
+        hideOption();
+        showop=false;
+    }else{
+        showOption();
+        showop=true;
+    }
+}
+
 function showOption(){
     var list = document.getElementById("option");
-    
+    //list.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + 1 + "'checked >알림음"+ 1 +"<br>";
+    for(i=0;i<8;i++){
+        list.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + (i+1) + "'>알림음"+(i+1)+"<br>";
+    }
+    var inputs = list.getElementsByTagName("input");
+    inputs[myAlarm-1].checked = true;
+}
+function hideOption(){
+    var list = document.getElementById("option");
+    list.innerHTML = "";
+
 }
