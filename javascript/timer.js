@@ -71,7 +71,7 @@ var showop = false;
 function explain(e){
     if(!showop){
         var list = document.getElementById("option");
-        var label = "<label for='"+e.id+"'>옵션</label>";
+        var label = "<div id='list'><label for='"+e.id+"'>옵션</label></div>";
         list.innerHTML = label;
     }
 }
@@ -110,12 +110,14 @@ function option(){
 
 function showOption(){
     var list = document.getElementById("option");
-    list.innerHTML ="";
-    //list.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + 1 + "'checked >알림음"+ 1 +"<br>";
+    list.innerHTML ="<div id='list'></div>";
+    var k = document.getElementById('list');
+    k.innerHTML ="";
+
     for(i=0;i<8;i++){
-        list.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + (i+1) + "'>알림음"+(i+1)+"<br>";
+        k.innerHTML += "<input type='radio' name='alarm' onclick='setting(this)' value='" + (i+1) + "'>알림음"+(i+1)+"<br>";
     }
-    var inputs = list.getElementsByTagName("input");
+    var inputs = k.getElementsByTagName("input");
     inputs[myAlarm-1].checked = true;
 }
 function hideOption(){

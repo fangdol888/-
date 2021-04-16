@@ -21,10 +21,19 @@ div#time{
     color:darkcyan;
     
 }
+div#list{
+    border-style:dashed;
+    border-width: 2px;
+    max-width: 100px;
+    border-color: lightskyblue;
+    margin-left:auto;
+    margin-right: auto;
+}
 #box{
     padding: 10px;
     border-style: solid;
     border-width: 2px;
+    border-color: lightslategray;
     max-width:200px;
     margin-left:auto;
     margin-right: auto;
