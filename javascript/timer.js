@@ -88,13 +88,18 @@ function stop(){
     stopping = true;
     start=false;
 }
+
 function alarm(){
+
     var src = "./mp3/"+myAlarm+".mp3";
     var audio = new Audio(src);
     audio.play();
+
 }
+
 function setting(e){
     myAlarm = e.value;
+    alarm();
 }
 
 
