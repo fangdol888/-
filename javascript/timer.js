@@ -91,7 +91,7 @@ function resting(started){
     text.innerHTML= minute + ":" + second;
     if(stopping){
         stopping=false;
-        text.innerHTML = "중지되었습니다.";
+        text.innerHTML = "STOP";
         return;
     }
     else if(diff > 0){
@@ -124,6 +124,9 @@ function tomato(e){
 }
 
 function stop(){    
+    var text = document.getElementById("timer");
+    text.style.color="black";
+    isrest = false;
     stopping = true;
     start=false;
 }
