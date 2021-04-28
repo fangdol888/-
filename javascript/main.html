@@ -9,8 +9,9 @@
    <link href="../tomato.png" rel="shortcut icon" type="image/x-icon">
     <script src="timer.js"></script>
 </head>
-<body>
+<body onload='init()'>
     <div id="box">
+       
         <div id="time">
             <label for="minute">작업시간: </label><input type="text" maxlength="4" size='1' id="minute" value='25'><label for="minute"> 분 </label><br>
             <label for="rest"> 쉬는시간: </label><input type="text" maxlength="4" size="1" id="rest" value='5'><label for="rest"> 분 </label>
@@ -19,7 +20,11 @@
             <input type="button" id="stop" onclick="stop();" value="중지">
         <br>
         <br>
-        <div id="timer"></div>
+        
+        <div id="container">
+            <canvas id="graph" width='200' height="200"></canvas>
+            <div id="timer">Timer</div>
+        </div>
         <div id="audio"></div>
         <input type="image" src="../tomato.png" width="50px"  onclick="option()" onmouseover="explain(this)" onmouseout="tomato(this)">
          <div id="option">

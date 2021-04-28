@@ -3,17 +3,36 @@ var rest;
 var stopping = false;
 var start = false;
 var myAlarm = 1;
+var canvas;
+var context;
+var sizeX=200, sizeY=200;
+var r = 100;
+var isrest = false;
+
+function init(){
+    canvas = document.getElementById('graph');
+    sizeX = canvas.clientWidth;
+    sizeY = canvas.clientHeight;
+    r = (sizeX > sizeY)?sizeY/2:sizeX/2;
+    context = canvas.getContext("2d");
+    context.beginPath();
+    context.arc(sizeX/2,sizeY/2,r, 0, 2*Math.PI, false);
+    context.strokeStyle = "red";
+    context.stroke();
+}
 
 function timer(){
-    min = document.getElementById("minute").value;
-    rest = document.getElementById("rest").value;
-    if(isNaN(min) || isNaN(rest)){
+    m = document.getElementById("minute").value;
+    re = document.getElementById("rest").value;
+    if(isNaN(m) || isNaN(re)){
         alert("잘못된 입력입니다. 숫자로 입력해주세요");
     }
-    else if(min == "" || rest ==""){
+    else if(m == "" || re ==""){
         alert("빈칸이 있습니다. 숫자를 입력하세요");
     }else{
         if(!start){
+            min = m;
+            rest = re;
             var started = new Date();
             stopping= false;
             start=true;
@@ -22,26 +41,41 @@ function timer(){
     }
 }
 
+function drawCircle(max, re){
+    var startPoint = 1.5*Math.PI;
+    context.clearRect(0,0,sizeX,sizeY);
+    context.beginPath();
+    context.fillStyle="red";
+    context.arc(sizeX/2,sizeY/2,r,startPoint, startPoint + re/(max*60)*2*Math.PI, isrest);
+    context.lineTo(sizeX/2,sizeY/2);
+    context.lineTo(sizeX/2,0);
+    context.closePath();
+    context.fill();
+}
 function showTime(started){
     var now = new Date();
     var text = document.getElementById("timer");
     var diff = min * 60 * 1000 - (now.getTime() - started.getTime());
     var second = Math.floor(diff /1000) % 60;
     var minute = Math.floor(diff/1000/60) % 60;
+    if(minute <10) minute = '0'+minute;
+    if(second<10) second='0'+second;
+    text.innerHTML=  minute + ":" + second+"";
 
-    text.innerHTML= "남은 작업시간... <br>" + minute + "분 " + second+" 초";
 
     if(stopping){
         stopping = false;
-        text.innerHTML = "중지되었습니다.";
+        text.innerHTML = "STOP";
         return;
     }
     if(diff > 0){
+        drawCircle(min ,diff/1000);
         setTimeout(showTime, 100, started);
-        
     }
     else{
         alarm();
+        isrest =true;
+        text.style.color="blue";
         resting(now);
     }
 }
@@ -52,17 +86,22 @@ function resting(started){
     var diff = rest * 60 * 1000 - (now.getTime() - started.getTime());
     var second = Math.floor(diff /1000) % 60;
     var minute = Math.floor(diff/1000/60) % 60;
-    text.innerHTML= "남은 쉬는시간...<br>" + minute + "분 " + second+" 초";
+    if(minute <10) minute = '0'+minute;
+    if(second<10) second='0'+second;
+    text.innerHTML= minute + ":" + second;
     if(stopping){
         stopping=false;
         text.innerHTML = "중지되었습니다.";
         return;
     }
     else if(diff > 0){
+        drawCircle(rest,diff/1000);
         setTimeout(resting, 100, started);
     }
     else{
         alarm();
+        isrest = false;
+        text.style.color="black";
         showTime(now);
     }
 }

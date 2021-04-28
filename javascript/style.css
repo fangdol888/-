@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url('../fonts/digital-7.ttf');
+ }
+ 
 #made{
     position:fixed;
     right:10px;
@@ -11,9 +16,19 @@ body{
     font-weight:bold;
     text-align:center;
 }
+div#container{
+    position: relative;
+    width: 200;
+    height: 200;
+}
 div#timer{
-    color:red;
-    font-size: large;
+    position: absolute;
+    width: 100%;
+    top:calc(50% - 15pt);
+    text-align: center;
+    color:black;
+    font-size: 30pt;
+    font-family: 'digital-7';
     font-weight: bold;
     
 }
@@ -30,6 +45,7 @@ div#list{
     margin-right: auto;
 }
 #box{
+    
     padding: 10px;
     border-style: solid;
     border-width: 2px;
